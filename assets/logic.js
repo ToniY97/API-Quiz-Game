@@ -32,7 +32,21 @@ function startQuiz() {
     
         // function to decrement timeLeft every second
         if (timeLeft <= 0 || currentQuestionIndex >= question.length) {
-            endQuiz();
+            ;
         }
     }, 1000);
+}
+
+function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById("question-title").textContent = currentQuestion;
+
+    for (let i = 0; i < currentQuestion.choices.length; i++) {
+        const choice = currentQuestion.choices[i];
+        const li = document.createElement("li");
+        li.textContent = choice;
+        li.addEventListener("click", function () {
+            checkAnswer(choice, currentQuestion.correctAnswer);
+        });
+    }
 }
