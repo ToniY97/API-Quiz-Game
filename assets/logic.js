@@ -35,7 +35,8 @@ function startQuiz() {
             ;
         }
     }, 1000);
-}
+    displayQuestion();
+} 
 
 function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
