@@ -21,7 +21,7 @@ let timeLeft = 60;
 let timerInterval;
 
 startButton.addEventListener("click", startQuiz);
-submitButton.addEventListener("click", submitScore);
+
 
 function startQuiz() {
     startButton.classList.add("hide");//Hide start button and display questions
@@ -31,8 +31,8 @@ function startQuiz() {
         timerSpan.textContent = timeLeft;
     
         // function to decrement timeLeft every second
-        if (timeLeft <= 0 || currentQuestionIndex >= question.length) {
-            ;
+        if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
+            
         }
     }, 1000);
     displayQuestion();
@@ -49,5 +49,6 @@ function displayQuestion() {
         li.addEventListener("click", function () {
             checkAnswer(choice, currentQuestion.correctAnswer);
         });
+        choicesUl.appendChild(li);
     }
 }
