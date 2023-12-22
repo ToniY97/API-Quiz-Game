@@ -40,7 +40,7 @@ function startQuiz() {
 
 function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
-    document.getElementById("question-title").textContent = currentQuestion;
+    document.getElementById("question-title").textContent = currentQuestion.question;
 
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         const choice = currentQuestion.choices[i];
