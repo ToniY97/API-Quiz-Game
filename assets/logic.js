@@ -82,17 +82,23 @@ function displayQuestion() {
 //function to check correct answer
 function checkAnswer(selectedAnswer, correctAnswer) {
     const feedbackDiv = document.getElementById("feedback");
+
+    // Unhide the feedback element
+    feedbackDiv.classList.remove("hide");
   
     if (selectedAnswer === correctAnswer) {
       feedbackDiv.textContent = "Correct!";
       setTimeout(function () {
         feedbackDiv.textContent = ""; // to clear the feedback after a short delay
       }, 1000); // to adjust the delay time as needed
-      document.body.appendChild(feedbackDiv);
+    
     } else {
       feedbackDiv.textContent = "Wrong! -10 seconds";
       timeLeft -= 10;
-      document.body.appendChild(feedbackDiv);
+      setTimeout(function () {
+        feedbackDiv.textContent = ""; 
+      }, 1000); 
+    
     }
   
     currentQuestionIndex++;
@@ -104,8 +110,6 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     }
   }
   
-
-
 function endQuiz() {
     clearInterval(timerInterval);
     questionsDiv.classList.add("hide");
