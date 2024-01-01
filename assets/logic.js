@@ -65,3 +65,20 @@ function checkAnswer(selectedAnswer, correctAnswer){
         
     }
 }
+
+function endQuiz() {
+    clearInterval(timerInterval);
+    questionsDiv.classList.add("hide");
+    endScreenDiv.classList.remove("hide");
+
+    const finalScore = Math.max(0, timeLeft); //ensure the final score is non-negative
+    finalScoreSpan.textContent = finalScore;
+
+    //Store the correct final score in localStorage
+    localStorage.setItem("finalScore", finalScore.toString());
+}
+
+function submitScore() {
+    const intials = initialsInput.value.trim();
+    const finalScore = parseInt(localStorage)
+}
