@@ -12,7 +12,7 @@ const feedbackDiv = document.getElementById("feedback");
 const questions = [
     {
         question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
-        choices: ["Argentinosaurus, Gorgosaurus, Tyrannosaurus rex, Stegosaurus"],
+        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
         correctAnswer: "Argentinosaurus",
     },
 ];
@@ -28,26 +28,36 @@ function startQuiz() {
     startButton.classList.add("hide");//Hide start button and display questions
     startScreen.classList.add("hide");
     questionsDiv.classList.remove("hide");
+    timerInterval = setInterval(function () {
+        timeLeft--;
+        timerSpan.textContent = timeLeft;
 
+        if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
+            endQuiz();
+        }
+    }, 1000);
 
     displayQuestion();
 } 
 
 function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
+  
     document.getElementById("question-title").textContent = currentQuestion.question;
     choicesUl.innerHTML = "";
-
+  
     for (let i = 0; i < currentQuestion.choices.length; i++) {
-        const choice = currentQuestion.choices[i];
-        const li = document.createElement("li");
-        li.textContent = choice;
-        li.addEventListener("click", function () {
-            checkAnswer(choice, currentQuestion.correctAnswer);
-        });
-        choicesUl.appendChild(li);
+      const choice = currentQuestion.choices[i];
+      const li = document.createElement("li");
+      li.textContent = choice;
+  
+      li.addEventListener("click", function () {
+        checkAnswer(choice, currentQuestion.correctAnswer);
+      });
+  
+      choicesUl.appendChild(li);
     }
-}
+  }
 
 //finction to check correct answer
 function checkAnswer(selectedAnswer, correctAnswer){
