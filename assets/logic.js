@@ -22,7 +22,7 @@ let timeLeft = 60;
 let timerInterval;
 
 startButton.addEventListener("click", startQuiz);
-
+submitButton.addEventListener("click", submitScore);
 
 function startQuiz() {
     startButton.classList.add("hide");//Hide start button and display questions
