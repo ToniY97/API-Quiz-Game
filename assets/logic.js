@@ -80,36 +80,31 @@ function displayQuestion() {
   }
 
 //function to check correct answer
-function checkAnswer(selectedAnswer, correctAnswer){
+function checkAnswer(selectedAnswer, correctAnswer) {
     const feedbackDiv = document.getElementById("feedback");
-
+  
     if (selectedAnswer === correctAnswer) {
-        feedbackDiv.textContent = "Correct!";
-        setTimeout(function () {
-            feedbackDiv.textContent = ""; // to clear the feedback after a short delay
-            currentQuestionIndex++;  
-          
-            if (currentQuestionIndex < questions.length) {
-                displayQuestion();
-            } else {
-              endQuiz();  
-            }
-        }, 1000); // to adjust the delay time
+      feedbackDiv.textContent = "Correct!";
+      setTimeout(function () {
+        feedbackDiv.textContent = ""; // to clear the feedback after a short delay
+      }, 1000); // to adjust the delay time as needed
+      document.body.appendChild(feedbackDiv);
     } else {
-        feedbackDiv.textContent = "Wrong! -10 seconds";
-        timeLeft -= 10;
-        setTimeout(function () {
-            feedbackDiv.textContent = "";
-            currentQuestionIndex++;  
-          
-            if (currentQuestionIndex < questions.length) {
-                displayQuestion();
-            } else {
-              endQuiz();  
-            }
-    }, 1000);
-} 
-}
+      feedbackDiv.textContent = "Wrong! -10 seconds";
+      timeLeft -= 10;
+      document.body.appendChild(feedbackDiv);
+    }
+  
+    currentQuestionIndex++;
+  
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion();
+    } else {
+      endQuiz();
+    }
+  }
+  
+
 
 function endQuiz() {
     clearInterval(timerInterval);
