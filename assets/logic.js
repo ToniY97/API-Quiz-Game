@@ -11,29 +11,29 @@ const feedbackDiv = document.getElementById("feedback");
 
 const questions = [
     {
-        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
+        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)?",
         choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
         correctAnswer: "Argentinosaurus",
     },
     {
-        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
-        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
-        correctAnswer: "Argentinosaurus",
+        question: " What's the most amount of money dinosaur fossils have sold for at auction?",
+        choices: ["1 million", "4 million", "8.3 million", "4.3 million"],
+        correctAnswer: "8.3 million",
     },
     {
-        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
-        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
-        correctAnswer: "Argentinosaurus",
+        question: "Which dinosaur's name means 'Tyrant Lizard'?",
+        choices: ["Pterodactyl", "Gorgosaurus", "Spinosaurus", "Tyrannosaurus"],
+        correctAnswer: "Tyrannosaurus",
     },
     {
-        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
-        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
-        correctAnswer: "Argentinosaurus",
+        question: "How many horns did Triceratops have?",
+        choices: ["1", "2", "3", "4"],
+        correctAnswer: "3",
     },
     {
-        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
-        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
-        correctAnswer: "Argentinosaurus",
+        question: "The name Pachycephalosaurus means what?",
+        choices: ["Tyrant Lizard", "Thick-Headed Lizard", "Big Lizard", "Big-headed Lizard"],
+        correctAnswer: "Thick-Headed Lizard",
     },
 ];
 
@@ -87,18 +87,28 @@ function checkAnswer(selectedAnswer, correctAnswer){
         feedbackDiv.textContent = "Correct!";
         setTimeout(function () {
             feedbackDiv.textContent = ""; // to clear the feedback after a short delay
-          }, 1000); // to adjust the delay time
+            currentQuestionIndex++;  
+          
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+              endQuiz();  
+            }
+        }, 1000); // to adjust the delay time
     } else {
         feedbackDiv.textContent = "Wrong! -10 seconds";
         timeLeft -= 10;
-    }
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex < questions.length) {
-        displayQuestion();
-    } else {
-      endQuiz();  
-    }
+        setTimeout(function () {
+            feedbackDiv.textContent = "";
+            currentQuestionIndex++;  
+          
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+              endQuiz();  
+            }
+    }, 1000);
+} 
 }
 
 function endQuiz() {
