@@ -15,6 +15,26 @@ const questions = [
         choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
         correctAnswer: "Argentinosaurus",
     },
+    {
+        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
+        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
+        correctAnswer: "Argentinosaurus",
+    },
+    {
+        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
+        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
+        correctAnswer: "Argentinosaurus",
+    },
+    {
+        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
+        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
+        correctAnswer: "Argentinosaurus",
+    },
+    {
+        question: "What is the name of the heaviest dinosaur? (estimated weight 60-124 tonnes)",
+        choices: ["Argentinosaurus", "Gorgosaurus", "Tyrannosaurus rex", "Stegosaurus"],
+        correctAnswer: "Argentinosaurus",
+    },
 ];
 
 let currentQuestionIndex = 0;
@@ -59,10 +79,15 @@ function displayQuestion() {
     }
   }
 
-//finction to check correct answer
+//function to check correct answer
 function checkAnswer(selectedAnswer, correctAnswer){
+    const feedbackDiv = document.getElementById("feedback");
+
     if (selectedAnswer === correctAnswer) {
         feedbackDiv.textContent = "Correct!";
+        setTimeout(function () {
+            feedbackDiv.textContent = ""; // to clear the feedback after a short delay
+          }, 1000); // to adjust the delay time
     } else {
         feedbackDiv.textContent = "Wrong! -10 seconds";
         timeLeft -= 10;
