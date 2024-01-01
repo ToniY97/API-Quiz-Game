@@ -62,7 +62,7 @@ function checkAnswer(selectedAnswer, correctAnswer){
     if (currentQuestionIndex < questions.length) {
         displayQuestion();
     } else {
-        
+      endQuiz();  
     }
 }
 
