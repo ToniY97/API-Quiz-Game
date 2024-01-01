@@ -79,6 +79,17 @@ function endQuiz() {
 }
 
 function submitScore() {
-    const intials = initialsInput.value.trim();
-    const finalScore = parseInt(localStorage)
+    const initials = initialsInput.value.trim();
+    const finalScore = parseInt(localStorage.getItem("finalScore")) || 0;
+
+    if (initials !== "") {
+        //Store the score and initials in localStorage
+        const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        const newScore = { initials: initials, score: finalScore };
+        highScores.push(newScore);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+
+        //Redirect to high scores page
+        window.location.href = "highscores.html";
+    }
 }
