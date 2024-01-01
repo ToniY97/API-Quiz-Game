@@ -1,6 +1,7 @@
 const startButton = document.getElementById("start");
 const questionsDiv = document.getElementById("questions");
 const choicesUl = document.getElementById("choices");
+const startScreen = document.getElementById("start-screen")
 const endScreenDiv = document.getElementById("end-screen");
 const finalScoreSpan = document.getElementById("final-score");
 const initialsInput = document.getElementById("initials");
@@ -25,22 +26,17 @@ startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
     startButton.classList.add("hide");//Hide start button and display questions
+    startScreen.classList.add("hide");
     questionsDiv.classList.remove("hide");
-    timerInterval = setInterval(function () {
-        timeLeft--;
-        timerSpan.textContent = timeLeft;
-    
-        // function to decrement timeLeft every second
-        if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
-            
-        }
-    }, 1000);
+
+
     displayQuestion();
 } 
 
 function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     document.getElementById("question-title").textContent = currentQuestion.question;
+    choicesUl.innerHTML = "";
 
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         const choice = currentQuestion.choices[i];
@@ -50,5 +46,22 @@ function displayQuestion() {
             checkAnswer(choice, currentQuestion.correctAnswer);
         });
         choicesUl.appendChild(li);
+    }
+}
+
+//finction to check correct answer
+function checkAnswer(selectedAnswer, correctAnswer){
+    if (selectedAnswer === correctAnswer) {
+        feedbackDiv.textContent = "Correct!";
+    } else {
+        feedbackDiv.textContent = "Wrong! -10 seconds";
+        timeLeft -= 10;
+    }
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+    } else {
+        
     }
 }
