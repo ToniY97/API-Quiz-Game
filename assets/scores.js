@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const highScoresList = document.getElementById("highscores");
 
     //Display each high score in the list
-    highScores.array.forEach((score, index) => {
+    highScores.forEach((score, index) => {
       const listItem = document.createElement("li");
       listItem.textContent = `${index + 1}. ${score.initials}: ${score.score}`;
       highScoresList.appendChild(listItem);  
