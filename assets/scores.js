@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve scores from localStorage
     const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
+    
+    // sort high scores in descending order
+    highScores.sort((a, b) => b.score - a.score);
     // Get the elemnt where you want to display high scores
     const highScoresList = document.getElementById("highscores");
 
@@ -11,4 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
       listItem.textContent = `${index + 1}. ${score.initials}: ${score.score}`;
       highScoresList.appendChild(listItem);  
     });
+  
+    
 })
