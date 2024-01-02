@@ -32,4 +32,7 @@ To play the game, open the `index.html` file in a web browser. Click the "Start 
 
 - Questions sourced from various dinosaur trivia websites.
 
-![snapshot]()
+![snapshot](.assets/screencapture-127-0-0-1-5501-index-html-2024-01-02-09_24_33)
+![snapshot](.assets/screencapture-127-0-0-1-5501-highscores-html-2024-01-02-09_23_58)
+
+![link](https://toniy97.github.io/API-Quiz-Game/)
