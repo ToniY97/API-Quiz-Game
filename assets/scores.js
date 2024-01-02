@@ -14,5 +14,15 @@ document.addEventListener("DOMContentLoaded", function () {
       highScoresList.appendChild(listItem);  
     });
   
-    
+    // get the clear button element
+    const clearButton = document.getElementById("clear");
+
+    // Add click event listener to clear high scores
+    clearButton.addEventListener("click", function () {
+        //Clear high scores in localStorage
+        localStorage.removeItem("highScores");
+
+        //Clear the displayed high scores
+        highScoresList.innerHTML = "";
+    });
 })
